@@ -1,13 +1,10 @@
 from __future__ import annotations
-
 import logging
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
-
 import numpy as np
 
 logger = logging.getLogger(__name__)
-
 
 @dataclass(frozen=True)
 class ElasticityEstimate:
@@ -18,7 +15,6 @@ class ElasticityEstimate:
     n_treatment: int
     n_control: int
     is_significant: bool
-
 
 def estimate_elasticity(
     historical_aggregates: List[Dict],
@@ -74,7 +70,6 @@ def estimate_elasticity(
 
     return estimates
 
-
 def build_lift_curve(
     estimates: List[ElasticityEstimate],
 ) -> Optional[Dict[str, Any]]:
@@ -96,7 +91,6 @@ def build_lift_curve(
         "response_values": fitted.tolist(),
         "n_points": len(significant),
     }
-
 
 def lookup_learned_lift(
     lift_curve: Optional[Dict],
